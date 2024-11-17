@@ -4,6 +4,7 @@ An among us mod adding lots of quality-of-life features to the game.
 
 - 🌙 Dark mode
 - 🔇 Player muting
+- ☝️ Chat commands
 - 📝 Task tracking
 - 👤 Role tracking
 - 👀 Things disabling/hidding
