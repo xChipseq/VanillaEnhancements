@@ -60,7 +60,7 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
         TaskTrackingOptions = Config.Bind("Task Tracking", "TaskTrackingOptions", TaskTrackingOptionsEnum.Everyone, "Local: Tracks only your tasks\nEveryoneButLocal: Tracks tasks of every player besides you\nEveryone: Tracks tasks of everyone\nRemember that you can see other's tasks only when dead");
 
         ShowTeam = Config.Bind("Role Tracking", "ShowTeam", true, "Shows you the team of every player when you die");
-        ShowTeam = Config.Bind("Role Tracking", "ShowRole", true, "Shows you the role of every player when you die\nShowTeam needs to be turned on");
+        ShowRole = Config.Bind("Role Tracking", "ShowRole", true, "Shows you the role of every player when you die\nShowTeam needs to be turned on");
         
         PlayerMuting.Setup();
         ReactorCredits.Register("VanillaEnhancements", "1.0.0-dev", false, ReactorCredits.AlwaysShow);

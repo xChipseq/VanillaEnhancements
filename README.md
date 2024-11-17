@@ -31,7 +31,7 @@ It will be generated after the first launch and the changes you make need a rest
 ### Releases
 | Mod Version | Among us version | Download |
 |:-:|:-:|:-:|
-| **1.0.0** | **2024.10.29** | *download* |
+| **1.0.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.0) |
 
 Put `VanillaEnhancements.dll` in the **`BepInEx\plugins`** folder with other mods or download the zip package.
 > [!Warning]
