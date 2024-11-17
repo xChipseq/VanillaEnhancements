@@ -84,7 +84,6 @@ public static class DarkModePatches
             __instance.MapButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.MapButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.MapButton.transform.FindChild("Background").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
-            
 
             __instance.SettingsButton.GetComponent<PassiveButton>().inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.SettingsButton.GetComponent<PassiveButton>().activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);

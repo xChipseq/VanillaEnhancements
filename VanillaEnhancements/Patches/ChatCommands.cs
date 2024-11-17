@@ -92,6 +92,7 @@ public static class ChatCommands
                 if (!AmongUsClient.Instance.CanKick())
                 {
                     __instance.AddChat(PlayerControl.LocalPlayer, "%^error Only the host can kick players", false);
+                    return false;
                 }
 
                 string argument = text[6..].ToLower();
@@ -111,7 +112,8 @@ public static class ChatCommands
                 {
                     if (foundPlayer != PlayerControl.LocalPlayer)
                     {
-                        AmongUsClient.Instance.KickPlayer(foundPlayer.Data.PlayerId, false);
+                        InnerNet.ClientData client = AmongUsClient.Instance.GetClient(foundPlayer.PlayerId);
+                        AmongUsClient.Instance.KickPlayer(client.Id, false);
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^command {foundPlayer.Data.PlayerName} has been kicked from the lobby", false);
                     }
                     else
@@ -131,6 +133,7 @@ public static class ChatCommands
                 if (!AmongUsClient.Instance.CanBan())
                 {
                     __instance.AddChat(PlayerControl.LocalPlayer, "%^error Only the host can ban players", false);
+                    return false;
                 }
 
                 string argument = text[5..].ToLower();
@@ -150,7 +153,8 @@ public static class ChatCommands
                 {
                     if (foundPlayer != PlayerControl.LocalPlayer)
                     {
-                        AmongUsClient.Instance.KickPlayer(foundPlayer.Data.PlayerId, true);
+                        InnerNet.ClientData client = AmongUsClient.Instance.GetClient(foundPlayer.PlayerId);
+                        AmongUsClient.Instance.KickPlayer(client.Id, true);
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^command {foundPlayer.Data.PlayerName} has been banned from the lobby", false);
                     }
                     else

@@ -16,6 +16,7 @@ public static class RoleTrackingPatches
         private static void Postfix(HudManager __instance)
         {
             if (LobbyBehaviour.Instance) return;
+            if (GameManager.Instance.IsHideAndSeek()) return;
             if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.ShowTeam.Value) return;
 
             if (PlayerControl.LocalPlayer.Data.IsDead)
