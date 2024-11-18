@@ -8,7 +8,7 @@ An among us mod adding lots of quality-of-life features to the game.
 - 📝 Task tracking
 - 👤 Role tracking
 - 👀 Things disabling/hiding
-#### *and more*
+- *and more*
 
 > ❓
 > You can create an issue if you have any ideas
@@ -55,3 +55,4 @@ Put `VanillaEnhancements.dll` in the **`BepInEx\plugins`** folder with other mod
 > The mod needs [BepInEx](https://builds.bepinex.dev/projects/bepinex_be) and [Reactor](https://github.com/nuclearpowered/reactor) to work properly. While **BepInEx** is used by every mod and shouldn't be a problem, without **Reactor** you can't launch the mod.
 
 > *This mod is not affiliated with Among Us or Innersloth LLC, and the content contained therein is not endorsed or otherwise sponsored by Innersloth LLC. Portions of the materials contained herein are property of Innersloth LLC. © Innersloth LLC.*
+> [License](./LICENSE)
