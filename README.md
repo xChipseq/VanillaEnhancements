@@ -13,6 +13,20 @@ An among us mod adding lots of quality-of-life features to the game.
 > ❓
 > You can create an issue if you have any ideas
 
+## Commands
+List of commands added in the mod:
+### Anyone
+**`/mute [player]` - mutes the choosen player**
+**`/unmute [player]` - unmutes the choosen player**
+**`/muted` - shows a list of all muted players**
+**`/ids` - shows a list of all players in lobby and their ids**
+### Host-only
+**`/kick [player]` - kicks the player from lobby**
+**`/ban [player]` - bans the player from lobby**
+> [!Info]
+> You can either pass the name of player or their id for the `[player]` argument 
+
+
 ## Configuration
 You can configure everything in `BepInEx\config\VanillaEnhancements.cfg`, the mod's config.
 It will be generated after the first launch and the changes you make need a restart to work
@@ -32,6 +46,8 @@ It will be generated after the first launch and the changes you make need a rest
 ### Releases
 | Mod Version | Among us version | Download |
 |:-:|:-:|:-:|
+| **1.0.2** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.2) |
+| **1.0.1** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.1) |
 | **1.0.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.0) |
 
 Put `VanillaEnhancements.dll` in the **`BepInEx\plugins`** folder with other mods or download the zip package.
