@@ -16,7 +16,6 @@ public static class ChatPatches
             if (chatText.StartsWith("%^muting") || chatText.StartsWith("%^command") || chatText.StartsWith("%^error")) return true;
             if (sourcePlayer.IsMuted())
             {
-                Logger<VanillaEnhancementsPlugin>.Warning($"{sourcePlayer.Data.PlayerName} ({sourcePlayer.Data.PlayerId}) is muted, skipping their message");
                 return false;
             }
             return true;
@@ -28,7 +27,7 @@ public static class ChatPatches
     {
         private static bool Prefix(ChatController __instance)
         {
-            float num = PluginSingleton<VanillaEnhancementsPlugin>.Instance.DisableChatCooldown.Value ? 0f : 3f - __instance.timeSinceLastMessage;
+            float num = ModConfig.DisableChatCooldown.Value ? 0f : 3f - __instance.timeSinceLastMessage;
             string freeChatText = __instance.freeChatField.Text;
 
             if (num > 0f && !freeChatText.StartsWith("/"))

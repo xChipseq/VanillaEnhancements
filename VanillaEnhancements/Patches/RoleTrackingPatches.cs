@@ -15,9 +15,10 @@ public static class RoleTrackingPatches
     {
         private static void Postfix(HudManager __instance)
         {
+            if (ModCompatibility.ShouldTurnOffTracking) return;
             if (LobbyBehaviour.Instance) return;
             if (GameManager.Instance.IsHideAndSeek()) return;
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.ShowTeam.Value) return;
+            if (!ModConfig.ShowTeam.Value) return;
 
             if (PlayerControl.LocalPlayer.Data.IsDead)
             {
@@ -48,7 +49,7 @@ public static class RoleTrackingPatches
 
                     if (roleText != null)
                     {
-                        if (PluginSingleton<VanillaEnhancementsPlugin>.Instance.ShowRole.Value)
+                        if (ModConfig.ShowRole.Value)
                         {
                             player.cosmetics.nameText.gameObject.transform.localPosition = Vector3.zero;
                             roleText.gameObject.active = !player.inVent;
@@ -89,7 +90,8 @@ public static class RoleTrackingPatches
     {
         private static void Postfix(PlayerVoteArea __instance, ref NetworkedPlayerInfo playerInfo)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.ShowTeam.Value) return;
+            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (!ModConfig.ShowTeam.Value) return;
             if (!PlayerControl.LocalPlayer.Data.IsDead) return;
 
             var player = playerInfo.Object;
@@ -100,7 +102,7 @@ public static class RoleTrackingPatches
                 var roleText = GameObject.Instantiate(__instance.ColorBlindName, __instance.ColorBlindName.transform.parent);
                 roleText.name = "RoleText";
 
-                if (PluginSingleton<VanillaEnhancementsPlugin>.Instance.ShowRole.Value)
+                if (ModConfig.ShowRole.Value)
                 {
                     roleText.text = $"<size=75%><color=#{role.TeamColor.ToHtmlStringRGBA()}>{role.NiceName}</color></size>";
                 }

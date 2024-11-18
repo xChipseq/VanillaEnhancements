@@ -12,12 +12,13 @@ public static class TaskTrackingPatches
     {
         private static void Postfix(PlayerControl __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
+            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (!ModConfig.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
 
             if (__instance.AmOwner || PlayerControl.LocalPlayer.Data.IsDead)
             {
-                if (!__instance.AmOwner && PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTrackingOptions.Value == TaskTrackingOptionsEnum.Local) return;
-                if (__instance.AmOwner && PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTrackingOptions.Value == TaskTrackingOptionsEnum.EveryoneButLocal) return;
+                if (!__instance.AmOwner && ModConfig.TaskTrackingOptions.Value == ModConfig.TaskTrackingOptionsEnum.Local) return;
+                if (__instance.AmOwner && ModConfig.TaskTrackingOptions.Value == ModConfig.TaskTrackingOptionsEnum.EveryoneButLocal) return;
                 if (__instance.Data.Role.TeamType == RoleTeamTypes.Impostor) return;
                 if (PlayerControl.LocalPlayer.Data.Role.TeamType == RoleTeamTypes.Impostor && !PlayerControl.LocalPlayer.Data.IsDead) return;
 
@@ -33,7 +34,8 @@ public static class TaskTrackingPatches
     {
         private static void Postfix(PlayerVoteArea __instance, ref NetworkedPlayerInfo playerInfo)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
+            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (!ModConfig.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
 
             var player = playerInfo.Object;
             if (player.Data.Role.TeamType == RoleTeamTypes.Impostor) return;

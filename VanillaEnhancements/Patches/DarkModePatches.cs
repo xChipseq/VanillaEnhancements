@@ -14,7 +14,7 @@ public static class DarkModePatches
     {
         private static void Postfix(ChatBubble __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
 
             __instance.Background.color = new UnityEngine.Color(0.2f, 0.2f, 0.2f);
             __instance.MaskArea.color = new UnityEngine.Color(0.1f, 0.1f, 0.1f);
@@ -28,7 +28,7 @@ public static class DarkModePatches
     {
         private static void Postfix(ChatController __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
 
             __instance.backgroundImage.color = new UnityEngine.Color(0.2f, 0.2f, 0.2f);
 
@@ -44,7 +44,7 @@ public static class DarkModePatches
     {
         private static void Postfix(FreeChatInputField __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
 
             __instance.background.color = new UnityEngine.Color(0.2f, 0.2f, 0.2f);
 
@@ -61,7 +61,7 @@ public static class DarkModePatches
     {
         private static void Postfix(MeetingHud __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
             __instance.meetingContents.transform.FindChild("PhoneUI").FindChild("baseColor").GetComponent<SpriteRenderer>().color = new Color(0.01f, 0.01f, 0.01f);
             __instance.Glass.color = new Color(0.7f, 0.7f, 0.7f, 0.3f);
             __instance.SkipVoteButton.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f);
@@ -79,7 +79,7 @@ public static class DarkModePatches
     {
         private static void Postfix(HudManager __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
             __instance.MapButton.inactiveSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.MapButton.activeSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.MapButton.selectedSprites.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
@@ -97,7 +97,7 @@ public static class DarkModePatches
     {
         private static void Postfix(ProgressTracker __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
             
             __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
         }
@@ -108,7 +108,7 @@ public static class DarkModePatches
     {
         private static void Postfix(FriendsListButton __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
             __instance.Button.transform.FindChild("Inactive").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.Button.transform.FindChild("Active").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             __instance.Button.transform.FindChild("Selected").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
@@ -122,8 +122,18 @@ public static class DarkModePatches
     {
         private static void Postfix(LobbyInfoPane __instance)
         {
-            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            if (!ModConfig.DarkMode.Value) return;
             __instance.InfoPaneBackground.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+        }
+    }
+
+    [HarmonyPatch(typeof(ChatNotification), nameof(ChatNotification.Awake))]
+    private static class ChatNotification_Awake
+    {
+        private static void Postfix(ChatNotification __instance)
+        {
+            __instance.background.color = new Color(0.2f, 0.2f, 0.2f);
+            __instance.chatText.color = Color.white;
         }
     }
 }

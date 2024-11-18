@@ -238,7 +238,7 @@ public static class ChatCommands
             if (chatText.StartsWith("%^error "))
             {
                 modifiedText = chatText[8..];
-                if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value)
+                if (!ModConfig.DarkMode.Value)
                     __instance.Background.color = new UnityEngine.Color(1f, 0.3f, 0.3f);
                 else
                     __instance.Background.color = new UnityEngine.Color(0.6f, 0.2f, 0.2f);
@@ -246,7 +246,7 @@ public static class ChatCommands
             else if (chatText.StartsWith("%^command "))
             {
                 modifiedText = chatText[10..];
-                if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value)
+                if (!ModConfig.DarkMode.Value)
                     __instance.Background.color = new UnityEngine.Color(0.2f, 0.2f, 1f);
                 else
                     __instance.Background.color = new UnityEngine.Color(0.2f, 0.2f, 0.5f);
@@ -254,7 +254,7 @@ public static class ChatCommands
             else if (chatText.StartsWith("%^muting "))
             {
                 modifiedText = chatText[9..];
-                if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value)
+                if (!ModConfig.DarkMode.Value)
                     __instance.Background.color = new UnityEngine.Color(0.8f, 0.8f, 0.8f);
                 else
                     __instance.Background.color = new UnityEngine.Color(0.4f, 0.4f, 0.4f);
