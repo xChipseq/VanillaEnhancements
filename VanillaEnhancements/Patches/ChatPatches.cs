@@ -13,7 +13,12 @@ public static class ChatPatches
     {
         private static bool Prefix(ChatController __instance, ref PlayerControl sourcePlayer, ref string chatText)
         {
-            if (sourcePlayer.IsMuted()) return false;
+            if (chatText.StartsWith("%^muting") || chatText.StartsWith("%^command") || chatText.StartsWith("%^error")) return true;
+            if (sourcePlayer.IsMuted())
+            {
+                Logger<VanillaEnhancementsPlugin>.Warning($"{sourcePlayer.Data.PlayerName} ({sourcePlayer.Data.PlayerId}) is muted, skipping their message");
+                return false;
+            }
             return true;
         }
     }

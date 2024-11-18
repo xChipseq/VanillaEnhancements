@@ -102,4 +102,28 @@ public static class DarkModePatches
             __instance.transform.FindChild("Background").GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0.6f);
         }
     }
+
+    [HarmonyPatch(typeof(FriendsListButton), nameof(FriendsListButton.Awake))]
+    private static class FriendsListButton_Awake
+    {
+        private static void Postfix(FriendsListButton __instance)
+        {
+            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            __instance.Button.transform.FindChild("Inactive").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+            __instance.Button.transform.FindChild("Active").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+            __instance.Button.transform.FindChild("Selected").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+            __instance.Button.transform.FindChild("background").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+            __instance.Button.transform.FindChild("NotifCount").GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.8f, 0.8f);
+        }
+    }
+
+    [HarmonyPatch(typeof(LobbyInfoPane), nameof(LobbyInfoPane.Awake))]
+    private static class LobbyInfoPane_Awake
+    {
+        private static void Postfix(LobbyInfoPane __instance)
+        {
+            if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.DarkMode.Value) return;
+            __instance.InfoPaneBackground.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+        }
+    }
 }

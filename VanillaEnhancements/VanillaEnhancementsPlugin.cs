@@ -63,7 +63,7 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
         ShowRole = Config.Bind("Role Tracking", "ShowRole", true, "Shows you the role of every player when you die\nShowTeam needs to be turned on");
         
         PlayerMuting.Setup();
-        ReactorCredits.Register("VanillaEnhancements", "1.0.0-dev", false, ReactorCredits.AlwaysShow);
+        ReactorCredits.Register("VanillaEnhancements", "1.0.2", false, ReactorCredits.AlwaysShow);
         Harmony.PatchAll();
     }
 }

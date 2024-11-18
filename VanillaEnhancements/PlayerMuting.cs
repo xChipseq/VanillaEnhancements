@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Reactor.Utilities;
 
 namespace VanillaEnhancements;
 
@@ -13,7 +14,8 @@ public static class PlayerMuting
 
     public static void MutePlayer(this PlayerControl player)
     {
-        if (!MutedPlayers.Contains(player.FriendCode)) MutedPlayers.Add(player.FriendCode);
+        Logger<VanillaEnhancementsPlugin>.Info($"muting {player.Data.PlayerName} ({player.Data.PlayerId}) - {player.Data.FriendCode}");
+        if (!MutedPlayers.Contains(player.Data.FriendCode)) MutedPlayers.Add(player.Data.FriendCode);
     }
     public static void MutePlayer(string code)
     {
@@ -22,7 +24,8 @@ public static class PlayerMuting
 
     public static void UnmutePlayer(this PlayerControl player)
     {
-        if (MutedPlayers.Contains(player.FriendCode)) MutedPlayers.Remove(player.FriendCode);
+        Logger<VanillaEnhancementsPlugin>.Info($"unmuting {player.Data.PlayerName} ({player.Data.PlayerId}) - {player.FriendCode}");
+        if (MutedPlayers.Contains(player.Data.FriendCode)) MutedPlayers.Remove(player.Data.FriendCode);
     }
     public static void UnmutePlayer(string code)
     {
@@ -31,7 +34,7 @@ public static class PlayerMuting
 
     public static bool IsMuted(this PlayerControl player)
     {
-        return MutedPlayers.Contains(player.FriendCode);
+        return MutedPlayers.Contains(player.Data.FriendCode);
     }
     public static bool IsMuted(string code)
     {

@@ -18,6 +18,8 @@ public static class TaskTrackingPatches
             {
                 if (!__instance.AmOwner && PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTrackingOptions.Value == TaskTrackingOptionsEnum.Local) return;
                 if (__instance.AmOwner && PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTrackingOptions.Value == TaskTrackingOptionsEnum.EveryoneButLocal) return;
+                if (__instance.Data.Role.TeamType == RoleTeamTypes.Impostor) return;
+                if (PlayerControl.LocalPlayer.Data.Role.TeamType == RoleTeamTypes.Impostor && !PlayerControl.LocalPlayer.Data.IsDead) return;
 
                 var totalTasks = __instance.Data.Tasks.Count;
                 var tasksDone = __instance.Data.Tasks.ToArray().Where(x => x.Complete).Count();
@@ -34,6 +36,7 @@ public static class TaskTrackingPatches
             if (!PluginSingleton<VanillaEnhancementsPlugin>.Instance.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
 
             var player = playerInfo.Object;
+            if (player.Data.Role.TeamType == RoleTeamTypes.Impostor) return;
 
             if (player.AmOwner || PlayerControl.LocalPlayer.Data.IsDead)
             {

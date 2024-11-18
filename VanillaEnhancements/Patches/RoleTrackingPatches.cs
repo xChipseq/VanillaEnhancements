@@ -60,6 +60,7 @@ public static class RoleTrackingPatches
                             roleText.gameObject.active = !player.inVent;
                             roleText.text = $"<size=75%><color=#{player.Data.Role.TeamColor.ToHtmlStringRGBA()}>{player.Data.Role.TeamType}</color></size>";
                         }
+                        if (player.Data.Role.TeamType == RoleTeamTypes.Impostor) player.cosmetics.nameText.color = Palette.ImpostorRed;
                     }
                 }
             }
@@ -73,6 +74,7 @@ public static class RoleTrackingPatches
                     {
                         player.gameObject.transform.FindChild("Names").FindChild("RoleText_TMP").gameObject.active = false;
                         player.cosmetics.nameText.gameObject.transform.localPosition = new Vector3(0, -0.15f, 0);
+                        player.cosmetics.nameText.color = Color.white;
                     }
                     catch
                     {
@@ -106,6 +108,7 @@ public static class RoleTrackingPatches
                 {
                     roleText.text = $"<size=75%><color=#{role.TeamColor.ToHtmlStringRGBA()}>{role.TeamType}</color></size>";
                 }
+                if (player.Data.Role.TeamType == RoleTeamTypes.Impostor) __instance.NameText.color = Palette.ImpostorRed;
 
                 __instance.ColorBlindName.transform.localPosition = __instance.PlayerIcon.transform.localPosition;
                 __instance.ColorBlindName.transform.SetWorldZ(-12.9f);

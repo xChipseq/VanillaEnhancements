@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using Reactor.Utilities;
@@ -85,10 +86,40 @@ public static class ChatCommands
 
                 return false;
             }
+            if (text.ToLower().StartsWith("/muted"))
+            {
+                if (PlayerMuting.MutedPlayers.Count == 0)
+                {
+                    __instance.AddChat(PlayerControl.LocalPlayer, "There are no muted players", false);
+                    return false;
+                }
+                
+                string fullString = "%^command Muted players:\n";
+                Dictionary<PlayerControl, byte> all = new();
+                foreach (var code in PlayerMuting.MutedPlayers)
+                {
+                    var foundPlayerByCode = AmongUsClient.Instance.allClients.ToArray().FirstOrDefault(c => c.FriendCode == code);
+                    all.Add(foundPlayerByCode.Character, foundPlayerByCode.Character.PlayerId);
+                }
+
+                all = all.OrderBy(x => x.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+                foreach (var player in all)
+                {
+                    fullString += $"{player.Key.Data.PlayerName} - {player.Value}\n";
+                }
+
+                __instance.AddChat(PlayerControl.LocalPlayer, fullString, false);
+
+                return false;
+            }
 
             // Host commands
             if (text.ToLower().StartsWith("/kick "))
             {
+                if (GameManager.Instance.GameHasStarted)
+                {
+                    return false;
+                }
                 if (!AmongUsClient.Instance.CanKick())
                 {
                     __instance.AddChat(PlayerControl.LocalPlayer, "%^error Only the host can kick players", false);
@@ -130,6 +161,10 @@ public static class ChatCommands
             }
             if (text.ToLower().StartsWith("/ban "))
             {
+                if (GameManager.Instance.GameHasStarted)
+                {
+                    return false;
+                }
                 if (!AmongUsClient.Instance.CanBan())
                 {
                     __instance.AddChat(PlayerControl.LocalPlayer, "%^error Only the host can ban players", false);
@@ -173,10 +208,18 @@ public static class ChatCommands
             if (text.ToLower().StartsWith("/ids"))
             {
                 string fullString = "%^command All player ids:\n";
+                Dictionary<PlayerControl, byte> all = new();
                 foreach (var player in AmongUsClient.Instance.allClients)
                 {
-                    fullString += $"{player.PlayerName} {(player.Character.AmOwner ? "(You) " : "")}- {player.Character.PlayerId}\n";
+                    all.Add(player.Character, player.Character.PlayerId);
                 }
+
+                all = all.OrderBy(x => x.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+                foreach (var player in all)
+                {
+                    fullString += $"{player.Key.Data.PlayerName} {(player.Key.AmOwner ? "(You) " : "")}- {player.Value}\n";
+                }
+
                 __instance.AddChat(PlayerControl.LocalPlayer, fullString, false);
 
                 return false;
