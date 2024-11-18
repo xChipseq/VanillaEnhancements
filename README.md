@@ -35,17 +35,17 @@ It will be generated after the first launch and the changes you make need a rest
 ## Mod Support
 | Mod | Support | Notes |
 |:-:|:-:|:-:|
-| [The Other Roles](https://github.com/TheOtherRolesAU/TheOtherRoles) | ⚠️ | Disable task/role tracking |
-| [Town of Us-R](https://github.com/eDonnes124/Town-Of-Us-R) | ⚠️ | Disable task/role tracking |
-| [Stellar Roles](https://github.com/Mr-Fluuff/StellarRolesAU) | ⚠️ | Disable task/role tracking |
+| [The Other Roles](https://github.com/TheOtherRolesAU/TheOtherRoles) | ✅ | No task/role tracking |
+| [Town of Us-R](https://github.com/eDonnes124/Town-Of-Us-R) | ✅ | No task/role tracking |
+| [Stellar Roles](https://github.com/Mr-Fluuff/StellarRolesAU) | ✅ | No task/role tracking |
 | [Submerged](https://github.com/SubmergedAmongUs/Submerged) | ✅ |  |
-> [!Note]
-> Expect mod compatibility update soon™
+| [LevelImposter](https://github.com/DigiWorm0/LevelImposter) | ✅ |  |
 
 ## Downloading
 ### Releases
 | Mod Version | Among us version | Download |
 |:-:|:-:|:-:|
+| **1.1.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.0) |
 | **1.0.2** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.2) |
 | **1.0.1** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.1) |
 | **1.0.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.0) |
