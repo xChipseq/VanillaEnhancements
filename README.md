@@ -7,7 +7,7 @@ An among us mod adding lots of quality-of-life features to the game.
 - ☝️ Chat commands
 - 📝 Task tracking
 - 👤 Role tracking
-- 👀 Things disabling/hidding
+- 👀 Things disabling/hiding
 #### *and more*
 
 > ❓
@@ -16,13 +16,13 @@ An among us mod adding lots of quality-of-life features to the game.
 ## Commands
 List of commands added in the mod:
 ### Anyone
-- **`/mute [player]` - mutes the choosen player**
-- **`/unmute [player]` - unmutes the choosen player**
-- **`/muted` - shows a list of all muted players**
-- **`/ids` - shows a list of all players in lobby and their ids**
+- `/mute [player]` - mutes the choosen player
+- `/unmute [player]` - unmutes the choosen player
+- `/muted` - shows a list of all muted players
+- `/ids` - shows a list of all players in lobby and their ids
 ### Host-only
-- **`/kick [player]` - kicks the player from lobby**
-- **`/ban [player]` - bans the player from lobby**
+- `/kick [player]` - kicks the player from lobby
+- `/ban [player]` - bans the player from lobby
 > [!Note]
 > You can either pass the name of player or their id for the `[player]` argument 
 
