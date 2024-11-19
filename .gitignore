@@ -398,5 +398,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-VanillaEnhancements/obj/Debug/net6.0/VanillaEnhancements.AssemblyInfo.cs
-VanillaEnhancements/obj/Debug/net6.0/VanillaEnhancements.AssemblyInfoInputs.cache
+
+.AssemblyInfo.cs
+.cache

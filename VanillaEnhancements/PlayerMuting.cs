@@ -14,30 +14,36 @@ public static class PlayerMuting
 
     public static void MutePlayer(this PlayerControl player)
     {
-        Logger<VanillaEnhancementsPlugin>.Info($"muting {player.Data.PlayerName} ({player.Data.PlayerId}) - {player.Data.FriendCode}");
-        if (!MutedPlayers.Contains(player.Data.FriendCode)) MutedPlayers.Add(player.Data.FriendCode);
+        VELogger.Info($"PlayerMuting.MutePlayer() :: Muting {player.Data.PlayerName} ({player.Data.PlayerId})");
+        if (!MutedPlayers.Contains(player.Data.PlayerName)) MutedPlayers.Add(player.Data.PlayerName);
     }
-    public static void MutePlayer(string code)
+    public static void MutePlayer(string name)
     {
-        if (!MutedPlayers.Contains(code)) MutedPlayers.Add(code);
+        VELogger.Info($"PlayerMuting.MutePlayer() :: Unmuting player with name {name}");
+        if (!MutedPlayers.Contains(name)) MutedPlayers.Add(name);
     }
 
     public static void UnmutePlayer(this PlayerControl player)
     {
-        Logger<VanillaEnhancementsPlugin>.Info($"unmuting {player.Data.PlayerName} ({player.Data.PlayerId}) - {player.FriendCode}");
-        if (MutedPlayers.Contains(player.Data.FriendCode)) MutedPlayers.Remove(player.Data.FriendCode);
+        VELogger.Info($"PlayerMuting.UnmutePlayer() :: Unmuting {player.Data.PlayerName} ({player.Data.PlayerId})");
+        if (MutedPlayers.Contains(player.Data.PlayerName)) MutedPlayers.Remove(player.Data.PlayerName);
     }
-    public static void UnmutePlayer(string code)
+    public static void UnmutePlayer(string name)
     {
-        if (MutedPlayers.Contains(code)) MutedPlayers.Remove(code);
+        VELogger.Info($"PlayerMuting.UnmutePlayer() :: Unmuting player with name {name}");
+        if (MutedPlayers.Contains(name)) MutedPlayers.Remove(name);
     }
 
     public static bool IsMuted(this PlayerControl player)
     {
-        return MutedPlayers.Contains(player.Data.FriendCode);
+        bool isMuted = MutedPlayers.Contains(player.Data.PlayerName);
+        VELogger.Info($"PlayerMuting.IsMuted() :: Player {player.Data.PlayerName} is {(isMuted ? "muted" : "not muted")} ({isMuted})");
+        return isMuted;
     }
-    public static bool IsMuted(string code)
+    public static bool IsMuted(string name)
     {
-        return MutedPlayers.Contains(code);
+        bool isMuted = MutedPlayers.Contains(name);
+        VELogger.Info($"PlayerMuting.IsMuted() :: Player with name {name} is {(isMuted ? "muted" : "not muted")} ({isMuted})");
+        return isMuted;
     }
 }

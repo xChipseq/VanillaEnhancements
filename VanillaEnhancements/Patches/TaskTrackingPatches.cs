@@ -12,7 +12,12 @@ public static class TaskTrackingPatches
     {
         private static void Postfix(PlayerControl __instance)
         {
-            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (ModCompatibility.ShouldTurnOffTracking)
+            {
+                __instance.cosmetics.nameText.text = __instance.Data.PlayerName;
+                VELogger.Info($"Mod Compatibility :: Task tracking is disabled, not adding the task text");
+                return;
+            } 
             if (!ModConfig.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
 
             if (__instance.AmOwner || PlayerControl.LocalPlayer.Data.IsDead)
@@ -34,7 +39,12 @@ public static class TaskTrackingPatches
     {
         private static void Postfix(PlayerVoteArea __instance, ref NetworkedPlayerInfo playerInfo)
         {
-            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (ModCompatibility.ShouldTurnOffTracking)
+            {
+                __instance.NameText.text = playerInfo.PlayerName;
+                VELogger.Info($"Mod Compatibility :: Task tracking is disabled, not adding the meeting task text");
+                return;
+            } 
             if (!ModConfig.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
 
             var player = playerInfo.Object;

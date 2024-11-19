@@ -16,6 +16,7 @@ public static class ChatPatches
             if (chatText.StartsWith("%^muting") || chatText.StartsWith("%^command") || chatText.StartsWith("%^error")) return true;
             if (sourcePlayer.IsMuted())
             {
+                VELogger.Info($"ChatPatches :: Player {sourcePlayer.Data.PlayerName} is muted, not showing the message");
                 return false;
             }
             return true;

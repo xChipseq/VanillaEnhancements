@@ -15,12 +15,11 @@ public static class RoleTrackingPatches
     {
         private static void Postfix(HudManager __instance)
         {
-            if (ModCompatibility.ShouldTurnOffTracking) return;
             if (LobbyBehaviour.Instance) return;
             if (GameManager.Instance.IsHideAndSeek()) return;
             if (!ModConfig.ShowTeam.Value) return;
 
-            if (PlayerControl.LocalPlayer.Data.IsDead)
+            if (PlayerControl.LocalPlayer.Data.IsDead && !ModCompatibility.ShouldTurnOffTracking)
             {
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {
@@ -67,6 +66,7 @@ public static class RoleTrackingPatches
             }
             else
             {
+                if (ModCompatibility.ShouldTurnOffTracking) VELogger.Info($"Mod Compatibility :: Role tracking is disabled, not adding the role text");
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {
                     if (player.AmOwner) continue;
@@ -90,7 +90,11 @@ public static class RoleTrackingPatches
     {
         private static void Postfix(PlayerVoteArea __instance, ref NetworkedPlayerInfo playerInfo)
         {
-            if (ModCompatibility.ShouldTurnOffTracking) return;
+            if (ModCompatibility.ShouldTurnOffTracking)
+            {
+                VELogger.Info($"Mod Compatibility :: Role tracking is disabled, not adding the meeting role text");
+                return;
+            }
             if (!ModConfig.ShowTeam.Value) return;
             if (!PlayerControl.LocalPlayer.Data.IsDead) return;
 

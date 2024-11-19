@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Enhancements for the vanilla game")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0+b1157df130da0a09e5814d5e127aa7d0730c6847")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0+05316ed63371e6bafb396293c6fcd3a6b774993c")]
 [assembly: System.Reflection.AssemblyProductAttribute("VanillaEnhancements")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VanillaEnhancements")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.0")]

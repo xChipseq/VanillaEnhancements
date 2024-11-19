@@ -11,6 +11,7 @@ namespace VanillaEnhancements.Patches;
 public static class ChatCommands
 {
     [HarmonyPatch(typeof(ChatController), nameof(ChatController.SendFreeChat))]
+    [HarmonyPriority(Priority.First)]
     private static class ChatController_SendFreeChat
     {
         private static bool Prefix(ChatController __instance)
@@ -39,6 +40,7 @@ public static class ChatCommands
                     {
                         foundPlayer.MutePlayer();
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^muting {foundPlayer.Data.PlayerName} has been muted");
+                        VELogger.Info($"Chat Commands :: Muting {foundPlayer.Data.PlayerName}");
                     }
                     else
                     {
@@ -73,6 +75,7 @@ public static class ChatCommands
                     {
                         foundPlayer.UnmutePlayer();
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^muting {foundPlayer.Data.PlayerName} has been unmuted");
+                        VELogger.Info($"Chat Commands :: Unuting {foundPlayer.Data.PlayerName}");
                     }
                     else
                     {
@@ -109,6 +112,7 @@ public static class ChatCommands
                 }
 
                 __instance.AddChat(PlayerControl.LocalPlayer, fullString, false);
+                VELogger.Info($"Chat Commands :: Showing a list of all muted players");
 
                 return false;
             }
@@ -146,6 +150,7 @@ public static class ChatCommands
                         InnerNet.ClientData client = AmongUsClient.Instance.GetClient(foundPlayer.PlayerId);
                         AmongUsClient.Instance.KickPlayer(client.Id, false);
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^command {foundPlayer.Data.PlayerName} has been kicked from the lobby", false);
+                        VELogger.Info($"Chat Commands :: {foundPlayer.Data.PlayerName} has been kicked");
                     }
                     else
                     {
@@ -191,6 +196,7 @@ public static class ChatCommands
                         InnerNet.ClientData client = AmongUsClient.Instance.GetClient(foundPlayer.PlayerId);
                         AmongUsClient.Instance.KickPlayer(client.Id, true);
                         __instance.AddChat(PlayerControl.LocalPlayer, $"%^command {foundPlayer.Data.PlayerName} has been banned from the lobby", false);
+                        VELogger.Info($"Chat Commands :: {foundPlayer.Data.PlayerName} has been banned");
                     }
                     else
                     {
@@ -221,6 +227,7 @@ public static class ChatCommands
                 }
 
                 __instance.AddChat(PlayerControl.LocalPlayer, fullString, false);
+                VELogger.Info($"Chat Commands :: Showing a list of all player ids");
 
                 return false;
             }
@@ -230,6 +237,7 @@ public static class ChatCommands
     }
 
     [HarmonyPatch(typeof(ChatBubble), nameof(ChatBubble.SetText))]
+    [HarmonyPriority(Priority.First)]
     private static class ChatBubble_SetText
     {
         private static bool Prefix(ChatBubble __instance, ref string chatText)

@@ -117,15 +117,16 @@ public static class DarkModePatches
         }
     }
 
-    [HarmonyPatch(typeof(LobbyInfoPane), nameof(LobbyInfoPane.Awake))]
-    private static class LobbyInfoPane_Awake
-    {
-        private static void Postfix(LobbyInfoPane __instance)
-        {
-            if (!ModConfig.DarkMode.Value) return;
-            __instance.InfoPaneBackground.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
-        }
-    }
+    // undefined target method for patch???
+    // [HarmonyPatch(typeof(LobbyInfoPane), nameof(LobbyInfoPane.Awake))]
+    // private static class LobbyInfoPane_Awake
+    // {
+    //     private static void Postfix(LobbyInfoPane __instance)
+    //     {
+    //         if (!ModConfig.DarkMode.Value) return;
+    //         __instance.InfoPaneBackground.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+    //     }
+    // }
 
     [HarmonyPatch(typeof(ChatNotification), nameof(ChatNotification.Awake))]
     private static class ChatNotification_Awake
