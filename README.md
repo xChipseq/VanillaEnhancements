@@ -45,6 +45,7 @@ It will be generated after the first launch and the changes you make need a rest
 ### Releases
 | Mod Version | Among us version | Download |
 |:-:|:-:|:-:|
+| **1.1.1** | **2024.10.29** & **2024.11.26** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.1) |
 | **1.1.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.0) |
 | **1.0.2** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.2) |
 | **1.0.1** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.1) |
