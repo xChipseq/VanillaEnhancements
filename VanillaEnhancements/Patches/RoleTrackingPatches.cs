@@ -66,7 +66,7 @@ public static class RoleTrackingPatches
             }
             else
             {
-                if (ModCompatibility.ShouldTurnOffTracking) VELogger.Info($"Mod Compatibility :: Role tracking is disabled, not adding the role text");
+                if (ModCompatibility.ShouldTurnOffTracking) return;
                 foreach (var player in PlayerControl.AllPlayerControls)
                 {
                     if (player.AmOwner) continue;
@@ -86,15 +86,12 @@ public static class RoleTrackingPatches
     }
 
     [HarmonyPatch(typeof(PlayerVoteArea), nameof(PlayerVoteArea.SetCosmetics))]
+    [HarmonyPriority(Priority.Last)]
     private static class PlayerVoteArea_SetCosmetics
     {
         private static void Postfix(PlayerVoteArea __instance, ref NetworkedPlayerInfo playerInfo)
         {
-            if (ModCompatibility.ShouldTurnOffTracking)
-            {
-                VELogger.Info($"Mod Compatibility :: Role tracking is disabled, not adding the meeting role text");
-                return;
-            }
+            if (ModCompatibility.ShouldTurnOffTracking) return;
             if (!ModConfig.ShowTeam.Value) return;
             if (!PlayerControl.LocalPlayer.Data.IsDead) return;
 

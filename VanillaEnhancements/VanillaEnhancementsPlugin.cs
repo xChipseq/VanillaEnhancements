@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using BepInEx;
-using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
-using Newtonsoft.Json.Linq;
 using Reactor;
 using Reactor.Networking.Attributes;
 using Reactor.Utilities;
@@ -23,7 +18,7 @@ namespace VanillaEnhancements;
 public partial class VanillaEnhancementsPlugin : BasePlugin
 {
     public const string Id = "com.chipseq.vanillaenhancements";
-    public const string VersionString = "1.1.1";
+    public const string VersionString = "1.1.2";
     public static bool IsDevRelease = false;
 
     public static System.Version Version = System.Version.Parse(VersionString);
@@ -33,9 +28,9 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
     {
         VELogger.Info("Vanilla Enhancements is loading...");
 
-        bool dev = CheckDevRelease().Result;
-        IsDevRelease = dev;
-        ReactorCredits.Register("VanillaEnhancements", VersionString + (dev ? "-indev" : ""), false, ReactorCredits.AlwaysShow);
+        bool[] dev = CheckDevRelease().Result;
+        IsDevRelease = dev[0];
+        ReactorCredits.Register("VanillaEnhancements", VersionString + (IsDevRelease ? "-indev" : "") + (dev[1] ? " (Update Available)" : ""), false, ReactorCredits.AlwaysShow);
         ModConfig.Bind(Config);
         PlayerMuting.Setup();
         IL2CPPChainloader.Instance.Finished += ModCompatibility.Load;
@@ -45,23 +40,25 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
         }
         catch (Exception exception)
         {
-            VELogger.Error($"An error occured while loading Vanilla Enhancements-{VersionString + (dev ? "-indev" : "")} ({Id})");
+            VELogger.Error($"An error occured while loading Vanilla Enhancements-{VersionString + (IsDevRelease ? "-indev" : "")} ({Id})");
             VELogger.Error(exception.Message);
         }
         VELogger.Info("Vanilla Enhancements finished loading");
     }
 
-    public static async Task<bool> CheckDevRelease()
+    public static async Task<bool[]> CheckDevRelease()
     {
         string url = $"https://api.github.com/repos/xChipseq/VanillaEnhancements/tags";
         bool[] exists = await HttpVersionExists(url);
         VELogger.Info($"IsDevRelease: {!exists[0]} ({(exists[1] ? "success" : "fail")})");
-        return !exists[0];
+        VELogger.Info($"UpdateAvailable: {exists[2]} ({(exists[1] ? "success" : "fail")})");
+        return [!exists[0], exists[2]];
     }
 
     static async Task<bool[]> HttpVersionExists(string url)
     {
         bool found = false;
+        bool updateAvailable = false;
         using HttpClient client = new HttpClient();
         client.DefaultRequestHeaders.Add("User-Agent", "C# App");
         try
@@ -74,6 +71,9 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
             foreach (var tag in root.EnumerateArray())
             {
                 string name = tag.GetProperty("name").GetString();
+                Version ver = new Version(name);
+                int result = ver.CompareTo(Version);
+                if (result > 0) updateAvailable = true;
                 if (name == VersionString)
                 {
                     found = true;
@@ -81,7 +81,7 @@ public partial class VanillaEnhancementsPlugin : BasePlugin
                 }
             }
 
-            return [found, true];
+            return [found, true, updateAvailable];
         }
         catch (HttpRequestException ex)
         {

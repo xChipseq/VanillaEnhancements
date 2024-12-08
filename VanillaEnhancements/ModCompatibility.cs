@@ -7,6 +7,7 @@ internal static class ModCompatibility
     public static bool IsToUR { get; private set; }
     public static bool IsTOR { get; private set; }
     public static bool IsStellar { get; private set; }
+    public static bool IsLOR { get; private set; }
 
     public static bool ShouldTurnOffTracking { get; private set; }
 
@@ -23,7 +24,10 @@ internal static class ModCompatibility
         IsStellar = IL2CPPChainloader.Instance.Plugins.ContainsKey("me.fluff.stellarroles");
         VELogger.Info($"Mod Compatibility Loading :: IsStellar: {IsStellar}");
 
-        ShouldTurnOffTracking = IsToUR || IsTOR || IsStellar;
+        IsLOR = IL2CPPChainloader.Instance.Plugins.ContainsKey("chipseq.lotofroles");
+        VELogger.Info($"Mod Compatibility Loading :: IsLOR: {IsLOR}");
+
+        ShouldTurnOffTracking = IsToUR || IsTOR || IsStellar || IsLOR;
         VELogger.Info($"Mod Compatibility Loading :: ShouldTurnOffTracking: {ShouldTurnOffTracking}");
         VELogger.Info($"Mod Compatibility Loading :: All checks completed");
     }

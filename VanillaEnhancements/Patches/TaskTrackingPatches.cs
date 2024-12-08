@@ -15,7 +15,6 @@ public static class TaskTrackingPatches
             if (ModCompatibility.ShouldTurnOffTracking)
             {
                 __instance.cosmetics.nameText.text = __instance.Data.PlayerName;
-                VELogger.Info($"Mod Compatibility :: Task tracking is disabled, not adding the task text");
                 return;
             } 
             if (!ModConfig.TaskTracking.Value || !AmongUsClient.Instance.IsGameStarted) return;
