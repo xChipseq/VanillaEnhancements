@@ -15,23 +15,27 @@ public static class PlayerMuting
     public static void MutePlayer(this PlayerControl player)
     {
         VELogger.Info($"PlayerMuting.MutePlayer() :: Muting {player.Data.PlayerName} ({player.Data.PlayerId})");
-        if (!MutedPlayers.Contains(player.Data.PlayerName)) MutedPlayers.Add(player.Data.PlayerName);
+        if (!MutedPlayers.Contains(player.Data.PlayerName))
+            MutedPlayers.Add(player.Data.PlayerName);
     }
     public static void MutePlayer(string name)
     {
         VELogger.Info($"PlayerMuting.MutePlayer() :: Unmuting player with name {name}");
-        if (!MutedPlayers.Contains(name)) MutedPlayers.Add(name);
+        if (!MutedPlayers.Contains(name))
+            MutedPlayers.Add(name);
     }
 
     public static void UnmutePlayer(this PlayerControl player)
     {
         VELogger.Info($"PlayerMuting.UnmutePlayer() :: Unmuting {player.Data.PlayerName} ({player.Data.PlayerId})");
-        if (MutedPlayers.Contains(player.Data.PlayerName)) MutedPlayers.Remove(player.Data.PlayerName);
+        if (MutedPlayers.Contains(player.Data.PlayerName))
+            MutedPlayers.Remove(player.Data.PlayerName);
     }
     public static void UnmutePlayer(string name)
     {
         VELogger.Info($"PlayerMuting.UnmutePlayer() :: Unmuting player with name {name}");
-        if (MutedPlayers.Contains(name)) MutedPlayers.Remove(name);
+        if (MutedPlayers.Contains(name))
+            MutedPlayers.Remove(name);
     }
 
     public static bool IsMuted(this PlayerControl player)

@@ -111,7 +111,8 @@ public static class RoleTrackingPatches
                 {
                     roleText.text = $"<size=75%><color=#{role.TeamColor.ToHtmlStringRGBA()}>{role.TeamType}</color></size>";
                 }
-                if (player.Data.Role.TeamType == RoleTeamTypes.Impostor) __instance.NameText.color = Palette.ImpostorRed;
+                if (player.Data.Role.TeamType == RoleTeamTypes.Impostor)
+                    __instance.NameText.color = Palette.ImpostorRed;
 
                 __instance.ColorBlindName.transform.localPosition = __instance.PlayerIcon.transform.localPosition;
                 __instance.ColorBlindName.transform.SetWorldZ(-12.9f);

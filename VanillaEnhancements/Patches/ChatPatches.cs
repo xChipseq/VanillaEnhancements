@@ -8,6 +8,16 @@ namespace VanillaEnhancements.Patches;
 [HarmonyPatch()]
 public static class ChatPatches
 {
+    [HarmonyPatch(typeof(ChatController), nameof(ChatController.Awake))]
+    private static class ChatController_Awake
+    {
+        private static void Postfix(ChatController __instance)
+        {
+            // Removes the quick chat button
+            __instance.quickChatButton.gameObject.SetActive(!ModConfig.NoQuickChat.Value);
+        }
+    }
+
     [HarmonyPatch(typeof(ChatController), nameof(ChatController.AddChat))]
     private static class ChatController_AddChat
     {

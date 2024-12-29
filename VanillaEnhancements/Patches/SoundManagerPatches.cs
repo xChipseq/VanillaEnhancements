@@ -13,7 +13,9 @@ public static class SoundManagerPatches
     {
         private static bool Prefix(SoundManager __instance, ref string name)
         {
-            if ((name == "MapTheme" && ModConfig.DisableLobbyMusic.Value) || (name == "MainBG" && ModConfig.DisableMenuMusic.Value) || (name.StartsWith("HnS_Music") && ModConfig.DisableHNSMusic.Value))
+            if ((name == "MapTheme" && ModConfig.DisableLobbyMusic.Value) ||
+            (name == "MainBG" && ModConfig.DisableMenuMusic.Value) ||
+            (name.StartsWith("HnS_Music") && ModConfig.DisableHNSMusic.Value))
             {
                 return false;
             }

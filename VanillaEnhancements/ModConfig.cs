@@ -17,10 +17,12 @@ internal static class ModConfig
     // Meeting
     public static ConfigEntry<bool> DisableNameplates { get; private set; }
     public static ConfigEntry<bool> DisableLevelIndicators { get; private set; }
+    public static ConfigEntry<bool> DisableDummyVoting { get; private set; }
 
     // Chat
     public static ConfigEntry<bool> EnablePlayerMuting { get; private set; }
     public static ConfigEntry<bool> DisableChatCooldown { get; private set; }
+    public static ConfigEntry<bool> NoQuickChat { get; private set; }
 
     // Music
     public static ConfigEntry<bool> DisableMenuMusic { get; private set; }
@@ -42,9 +44,11 @@ internal static class ModConfig
 
         DisableNameplates = config.Bind(MeetingSection, "DisableNameplates", false, "Makes everyone's nameplate the default one\nAlso they are all black when dark mode is enabled");
         DisableLevelIndicators = config.Bind(MeetingSection, "DisableLevelIndicators", false, "Removes the level indicators");
+        DisableDummyVoting = config.Bind(MeetingSection, "DisableDummyVoting", true, "Dummies now vote with the player instead of voting randomly");
 
         EnablePlayerMuting = config.Bind(ChatSection, "PlayerMuting", true, "Enables player muting\nYou can mute any player to make their messages not be shown for you");
         DisableChatCooldown = config.Bind(ChatSection, "DisableChatCooldown", false, "Disables the chat cooldown\nPlease note that you can get banned for this so do not spam");
+        NoQuickChat = config.Bind(ChatSection, "NoQuickChat", false, "Removes the quick chat button because nobody uses it");
 
         DisableMenuMusic = config.Bind(MusicSection, "DisableMenuMusic", false);
         DisableHNSMusic = config.Bind(MusicSection, "DisableHNSMusic", false);
