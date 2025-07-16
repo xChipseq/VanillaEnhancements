@@ -33,27 +33,10 @@ It will be generated after the first launch and the changes you make need a rest
 
 
 ## Mod Support
-| Mod | Support | Notes |
-|:-:|:-:|:-:|
-| [The Other Roles](https://github.com/TheOtherRolesAU/TheOtherRoles) | ✅ | No task/role tracking |
-| [Town of Us-R](https://github.com/eDonnes124/Town-Of-Us-R) | ✅ | No task/role tracking |
-| [Stellar Roles](https://github.com/Mr-Fluuff/StellarRolesAU) | ✅ | No task/role tracking |
-| Lot Of Roles (coming soon) | ✅ | No task/role tracking |
-| [Submerged](https://github.com/SubmergedAmongUs/Submerged) | ✅ |  |
-| [LevelImposter](https://github.com/DigiWorm0/LevelImposter) | ✅ |  |
+Should work with 90% of mods.
+Role tracking is disabled when any popular role mod is found, but you may need to disable it yourself.
 
 ## Downloading
-### Releases
-| Mod Version | Among us version | Download |
-|:-:|:-:|:-:|
-| **1.1.3** | **2024.10.29** & **2024.11.26** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.3) |
-| **1.1.2** | **2024.10.29** & **2024.11.26** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.2) |
-| **1.1.1** | **2024.10.29** & **2024.11.26** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.1) |
-| **1.1.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.1.0) |
-| **1.0.2** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.2) |
-| **1.0.1** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.1) |
-| **1.0.0** | **2024.10.29** | [Download](https://github.com/xChipseq/VanillaEnhancements/releases/tag/1.0.0) |
-
 Put `VanillaEnhancements.dll` in the **`BepInEx\plugins`** folder with other mods or download the zip package.
 > [!Warning]
 > The mod needs [BepInEx](https://builds.bepinex.dev/projects/bepinex_be) and [Reactor](https://github.com/nuclearpowered/reactor) to work properly. While **BepInEx** is used by every mod and shouldn't be a problem, without **Reactor** you can't launch the mod.
