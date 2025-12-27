@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> The mod is not dead. Everything works fine on the newest Among Us version (v17.1.0). A new mod is in active development, revamping existing features and adding new things like amazing customization. Stay tuned!
+>
+> ~ Chip
+
 # Vanilla Enhancements
 
 An among us mod adding lots of quality-of-life features to the game.
