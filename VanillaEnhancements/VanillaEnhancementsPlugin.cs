@@ -18,7 +18,7 @@ namespace VanillaEnhancements;
 public partial class VanillaEnhancementsPlugin : BasePlugin
 {
     public const string Id = "com.chipseq.vanillaenhancements";
-    public const string VersionString = "1.2.0";
+    public const string VersionString = "1.2.1";
     public static bool IsDevRelease = false;
 
     public static System.Version Version = System.Version.Parse(VersionString);
