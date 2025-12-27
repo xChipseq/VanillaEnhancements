@@ -10,7 +10,7 @@ namespace VanillaEnhancements.Patches;
 [HarmonyPatch()]
 public static class ChatCommands
 {
-    [HarmonyPatch(typeof(ChatController), nameof(ChatController.SendFreeChat))]
+    [HarmonyPatch(typeof(ChatController), nameof(ChatController.SendChat))]
     [HarmonyPriority(Priority.First)]
     private static class ChatController_SendFreeChat
     {
