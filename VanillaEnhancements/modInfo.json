@@ -1,0 +1,17 @@
+{
+  "Name": "Vanilla Enhancements",
+  "Description": "Quality of life features and utilities enhancing the overall experience.",
+  "Tags": [
+    "enhanced",
+    "better",
+    "vanilla",
+    "qol"
+  ],
+  "License": "GPLv3",
+  "Authors": [
+    "Chipseq"
+  ],
+  "Links": {
+    "Source": "https://github.com/xChipseq/VanillaEnhancements"
+  }
+}
